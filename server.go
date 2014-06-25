@@ -82,6 +82,11 @@ func httpServer() {
         // parse the multipart form file upload; store up to 10 MB in memory
         r.ParseMultipartForm(10485760)
 
+        // check that files exist
+        if len(r.MultipartForm.File) < 1 {
+            return;
+        }
+
         // loop through all FileHeaders
         for _, fhArray := range r.MultipartForm.File {
             for _, fh := range fhArray {
