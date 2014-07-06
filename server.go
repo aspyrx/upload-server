@@ -83,7 +83,7 @@ func httpServer() {
         r.ParseMultipartForm(10485760)
 
         // check that files exist
-        if len(r.MultipartForm.File) < 1 {
+        if r.MultipartForm == nil || len(r.MultipartForm.File) < 1 {
             return;
         }
 
